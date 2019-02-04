@@ -5,14 +5,6 @@
  * array of integers.
  */
 public class SimpleMerge {
-    private int[] arr1;
-    private int[] arr2;
-
-    public SimpleMerge (int[] arr1, int[] arr2)
-    {
-        this.arr1=arr1;
-        this.arr2 =arr2;
-    }
 
     public static void simpleMerge()
     {
@@ -20,25 +12,35 @@ public class SimpleMerge {
     }
 
 
-    private static void merge(int[] elements,int from, int mid, int to, int[] temp)
-        {
-            int i = from;
-            int j = mid + 1;
-            int k = from;
-            while (i <= mid && j <= to)
-            {
-                if (elements[i] < elements[j])
-                {
-                    temp[k] = elements[i];
-                    i++;
-                }
-                else
-                {
-                    temp[k] = elements[j];
-                    j++;
-                }
-                k++;
+    private static void merge(int[] elements, int from, int mid, int to, int[] temp) {
+        int i = from;
+        int j = mid + 1;
+        int k = from;
+
+        while (i <= mid && j <= to) {
+            if (elements[i] < elements[j]) {
+                temp[k] = elements[i];
+                i++;
+            } else {
+                temp[k] = elements[j];
+                j++;
             }
+            k++;
+        }
+
+        while (i <= mid) {
+            temp[k] = elements[i];
+            i++;
+            k++;
+        }
+        while (j <= to) {
+            temp[k] = elements[j];
+            j++;
+            k++;
+        }
+        for (k = from; k <= to; k++) {
+            elements[k] = temp[k];
+        }
     }
 
 
