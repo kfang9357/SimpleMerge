@@ -5,62 +5,26 @@
  * array of integers.
  */
 public class SimpleMerge {
+    public static int[] simpleMerge(int[] arr1, int[] arr2) {
+        int[] arr3 = new int[arr1.length + arr2.length];
+        int arr1Index = 0;
+        int arr2Index = 0;
+        int arr3Index = 0;
 
-    public static void simpleMerge()
-    {
-
-    }
-
-
-    private static void merge(int[] elements, int from, int mid, int to, int[] temp) {
-        int i = from;
-        int j = mid + 1;
-        int k = from;
-
-        while (i <= mid && j <= to) {
-            if (elements[i] < elements[j]) {
-                temp[k] = elements[i];
-                i++;
+        while (arr1Index < arr1.length && arr2Index < arr2.length) {
+            if (arr1[arr1Index] < arr2[arr2Index]) {
+                arr3[arr3Index] = arr1[arr1Index];
+                arr3Index++;
+                arr1Index++;
             } else {
-                temp[k] = elements[j];
-                j++;
+                arr3[arr3Index] = arr2[arr2Index];
+                arr3Index++;
+                arr2Index++;
             }
-            k++;
-        }
 
-        while (i <= mid) {
-            temp[k] = elements[i];
-            i++;
-            k++;
         }
-        while (j <= to) {
-            temp[k] = elements[j];
-            j++;
-            k++;
-        }
-        for (k = from; k <= to; k++) {
-            elements[k] = temp[k];
-        }
-    }
-
-
-    public void mergeSort (int[] arr)
-    {
-        int n = arr.length;
-        int[] temp = new int [n];
-        mergeSortHelper (arr,0,n-1,temp);
-    }
-
-
-    public void mergeSortHelper(int[]arr, int left, int right, int[]temp)
-    {
-        if (left<right)
-        {
-            int mid = (left + right) / 2;
-            mergeSortHelper(arr,left,mid,temp);
-            mergeSortHelper(arr, mid+1, right, temp);
-            merge (arr, left, mid, right, temp);
-        }
+        return arr3;
     }
 
 }
+
