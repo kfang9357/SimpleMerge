@@ -23,6 +23,16 @@ public class SimpleMerge {
             }
 
         }
+        while (arr1Index < arr1.length) {
+            arr3[arr3Index] = arr1[arr1Index];
+            arr3Index++;
+            arr1Index++;
+        }
+        while (arr2Index < arr2.length) {
+            arr3[arr3Index] = arr2[arr2Index];
+            arr3Index++;
+            arr2Index++;
+        }
         return arr3;
     }
 
